@@ -133,7 +133,7 @@
                 <img :src="'/weapons/stats/deuterium.svg'" alt="Amount of deuterium required to build this ship">
             </div>
             <div class="tp">
-                <h4>{{ addZeroToTime(Math.floor(calculateTime(currentShip.production.timeSeconds) / 60 / 60)) }}:{{ addZeroToTime(Math.floor(calculateTime(currentShip.production.timeSeconds) / 60)) }}:{{ addZeroToTime(Math.floor(calculateTime(currentShip.production.timeSeconds)) % 60) }}</h4>
+                <h4>{{ addZeroToTime(Math.floor(calculateTime(currentShip.production.timeSeconds) / 60 / 60)) }}:{{ addZeroToTime(Math.floor(calculateTime(currentShip.production.timeSeconds) % 60)) }}:{{ addZeroToTime(Math.floor(calculateTime(currentShip.production.timeSeconds)) % 60) }}</h4>
                 <img :src="'/weapons/stats/time.svg'" alt="Amount of time required to build this ship">
             </div>
             <div class="tp">
@@ -199,6 +199,9 @@ function resetSystem () {
     }
 }
 
+/* this needs to be updated to reflect the change in how ship production cost and time are based on the tp for all ships
+See https://www.infinitelagrange.com/news/preview/upgrade/20240816/37809_1174787.html for more information.
+*/
 function calculateTime (time: number) {
     if (!["Battlecruiser", "Carrier", "Auxiliary Ship", "Battleship"].includes(currentShip.value.type)) {
         return time * (1 + (techPoints.value * 0.005));
@@ -331,7 +334,7 @@ function handleUpgrade (upgrade: SystemUpgrade) {
 }
 
 function addZeroToTime (num: number) {
-    if (String(num).length == 1) return num + "0";
+    if (String(num).length == 1) return "0" + num;
     else return num;
 }
 
