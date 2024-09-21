@@ -13,7 +13,7 @@ export const credits: Credit[] = [{
 }, {
     name: "WarpPrime",
     specific: ["Most Warspite modules", "Feature additions", "Bugfixes"],
-    dateAdded: "April 24, 2024"
+    dateAdded: "September 19, 2024"
 }, {
     name: "Toir",
     specific: ["Ediacaran D2", "Ediacaran C1", "Module Library redesign feedback"],
